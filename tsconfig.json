@@ -1,0 +1,11 @@
+// tsconfig.json
+{
+    "extends": "./tsconfig.base.json",
+    "files": [],
+    "references": [
+      { "path": "packages/core" },
+      { "path": "packages/utils" },
+      { "path": "packages/vue" },
+      { "path": "apps/demo" }
+    ]
+  }

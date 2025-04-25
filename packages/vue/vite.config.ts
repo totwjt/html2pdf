@@ -8,17 +8,16 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'MonorepoStarterVue',
-      fileName: (format) => `index.${format}.js`,
-      formats: ['es', 'umd']
+      fileName: (format) => `index.${format === 'es' ? 'es' : 'cjs'}.js`,
+      formats: ['es', 'cjs']
     },
     rollupOptions: {
       external: ['vue'],
       output: {
         globals: {
-          vue: 'Vue',
-        },
-        exports: 'named'
-      },
-    },
-  },
+          vue: 'Vue'
+        }
+      }
+    }
+  }
 });

@@ -2,6 +2,11 @@
   "name": "monorepo-starter",
   "version": "0.1.0",
   "private": true,
+  "volta": {
+    "node": "20.11.1",
+    "yarn": "1.22.19",
+    "pnpm": "8.15.3"
+  },
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
@@ -9,7 +14,8 @@
     "lint": "turbo run lint",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "turbo run build && changeset publish"
+    "release": "turbo run build && changeset publish",
+    "demo": "pnpm build && pnpm --filter @monorepo-starter/demo dev"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.1",

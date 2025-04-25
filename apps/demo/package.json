@@ -1,0 +1,23 @@
+{
+  "name": "@monorepo-starter/demo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm --filter @monorepo-starter/vue build && vite",
+    "build": "pnpm --filter @monorepo-starter/vue build && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@monorepo-starter/core": "workspace:*",
+    "@monorepo-starter/utils": "workspace:*",
+    "@monorepo-starter/vue": "workspace:*",
+    "vue": "^3.3.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.5.0",
+    "typescript": "^5.3.3",
+    "vite": "^4.5.0",
+    "vue-tsc": "^1.8.27"
+  }
+}

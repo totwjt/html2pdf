@@ -1,2 +1,2 @@
 // Export your Vue components here
-export * from './components';
+export { default as HelloWorld } from './components/HelloWorld.vue'

@@ -1,5 +1,2 @@
 // Export your Vue components here
-export const HelloWorld = {
-  name: 'HelloWorld',
-  template: '<div>Hello World</div>'
-};
+export { default as HelloWorld } from './HelloWorld.vue'

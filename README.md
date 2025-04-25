@@ -16,11 +16,16 @@ A modern monorepo starter template with TypeScript, Vue 3, Turborepo, and Change
 
 ```
 monorepo-starter/
+├── apps/
+│   └── demo/           # Demo application
 ├── packages/
-│   ├── core/           # Core package
-│   └── vue/            # Vue components
-└── apps/
-    └── playground/     # Demo application
+│   ├── core/          # Core package
+│   └── vue/           # Vue components
+├── docs/              # Project documentation
+│   ├── README.md      # Documentation index
+│   ├── CONTRIBUTING.md # Contribution guide
+│   └── DEVELOPMENT.md # Development guide
+└── scripts/           # Build and deployment scripts
 ```
 
 ## Getting Started
@@ -61,6 +66,11 @@ pnpm version-packages
 ```bash
 pnpm release
 ```
+
+## Documentation
+
+- [Development Guide](./docs/DEVELOPMENT.md)
+- [Contributing Guide](./docs/CONTRIBUTING.md)
 
 ## License
 
