@@ -1,6 +1,10 @@
-# Monorepo Starter
+# 🚀 Monorepo Starter
 
-A modern monorepo template using pnpm workspaces, TypeScript, and Vue 3.
+<div align="center">
+  <img src="https://img.shields.io/badge/Developed%20with-Cursor-2ea44f?style=for-the-badge&logo=cursor&logoColor=white" alt="Developed with Cursor" />
+</div>
+
+> A modern monorepo starter template built with pnpm workspaces, TypeScript, and Vue 3.
 
 ## Documentation
 
