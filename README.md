@@ -1,76 +1,42 @@
 # Monorepo Starter
 
-A modern monorepo starter template with TypeScript, Vue 3, Turborepo, and Changesets.
-
-## Features
-
-- 🚀 Modern development setup
-- 📦 Monorepo with pnpm workspaces
-- ⚡️ Fast builds with Turborepo
-- 📝 Automatic versioning with Changesets
-- 🧪 Testing with Vitest
-- 📚 TypeScript support
-- 🎨 Vue 3 components
-
-## Project Structure
-
-```
-monorepo-starter/
-├── apps/
-│   └── demo/           # Demo application
-├── packages/
-│   ├── core/          # Core package
-│   └── vue/           # Vue components
-├── docs/              # Project documentation
-│   ├── README.md      # Documentation index
-│   ├── CONTRIBUTING.md # Contribution guide
-│   └── DEVELOPMENT.md # Development guide
-└── scripts/           # Build and deployment scripts
-```
-
-## Getting Started
-
-1. Install dependencies:
-```bash
-pnpm install
-```
-
-2. Start development:
-```bash
-pnpm dev
-```
-
-3. Build packages:
-```bash
-pnpm build
-```
-
-4. Run tests:
-```bash
-pnpm test
-```
-
-## Version Management
-
-1. Create a changeset:
-```bash
-pnpm changeset
-```
-
-2. Version packages:
-```bash
-pnpm version-packages
-```
-
-3. Publish packages:
-```bash
-pnpm release
-```
+A modern monorepo template using pnpm workspaces, TypeScript, and Vue 3.
 
 ## Documentation
 
+- [Getting Started](./docs/getting-started.md)
+- [Project Structure](./docs/project-structure.md)
 - [Development Guide](./docs/DEVELOPMENT.md)
 - [Contributing Guide](./docs/CONTRIBUTING.md)
+- [中文文档](./docs/zh/README.md)
+
+## Features
+
+- 🚀 Modern monorepo setup with pnpm workspaces
+- 📦 Multiple packages with shared configurations
+- 🛠️ TypeScript support
+- ⚡ Vue 3 integration
+- 📝 Documentation in both English and Chinese
+
+## Quick Start
+
+```bash
+# Install dependencies
+pnpm install
+
+# Start development server
+pnpm dev
+
+# Build all packages
+pnpm build
+```
+
+## Packages
+
+- `@monorepo-starter/core`: Core utilities and shared logic
+- `@monorepo-starter/utils`: Common utility functions
+- `@monorepo-starter/vue`: Vue 3 components and composables
+- `@monorepo-starter/demo`: Demo application
 
 ## License
 

@@ -66,6 +66,66 @@ pnpm build
 pnpm test
 ```
 
+## 使用 Changesets 进行版本管理
+
+项目使用 Changesets 进行版本管理。以下是使用方法：
+
+### 1. 创建 Changeset
+
+当你的更改需要触发版本更新时：
+
+```bash
+pnpm changeset
+```
+
+这将：
+- 询问哪些包需要更新版本
+- 询问版本更新类型（主版本、次版本或修订版本）
+- 在 `.changeset/` 目录下创建 changeset 文件
+
+### 2. 查看 Changesets
+
+查看待处理的 changesets：
+
+```bash
+pnpm changeset status
+```
+
+### 3. 应用 Changesets
+
+应用所有待处理的 changesets 并更新包版本：
+
+```bash
+pnpm changeset version
+```
+
+这将：
+- 根据 changesets 更新包版本
+- 更新变更日志
+- 删除已应用的 changeset 文件
+
+### 4. 发布包
+
+发布所有更新的包：
+
+```bash
+pnpm changeset publish
+```
+
+这将：
+- 发布所有有新版本的包
+- 为新版本创建 Git 标签
+- 将标签推送到远程仓库
+
+### 5. 常见工作流程
+
+1. 进行更改
+2. 创建 changeset：`pnpm changeset`
+3. 提交更改和 changeset
+4. 准备发布时：
+   - 应用 changesets：`pnpm changeset version`
+   - 发布包：`pnpm changeset publish`
+
 ## 添加新包
 
 1. 在 `packages` 文件夹中创建新目录

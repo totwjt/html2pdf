@@ -66,6 +66,66 @@ To run tests:
 pnpm test
 ```
 
+## Version Management with Changesets
+
+The project uses Changesets for version management. Here's how to use it:
+
+### 1. Creating a Changeset
+
+When you make changes that should trigger a version bump:
+
+```bash
+pnpm changeset
+```
+
+This will:
+- Ask you which packages should be versioned
+- Ask you what kind of version bump (major, minor, or patch)
+- Create a changeset file in `.changeset/`
+
+### 2. Reviewing Changesets
+
+To see what changesets are pending:
+
+```bash
+pnpm changeset status
+```
+
+### 3. Applying Changesets
+
+To apply all pending changesets and update package versions:
+
+```bash
+pnpm changeset version
+```
+
+This will:
+- Update package versions based on changesets
+- Update changelogs
+- Remove the applied changeset files
+
+### 4. Publishing Packages
+
+To publish all updated packages:
+
+```bash
+pnpm changeset publish
+```
+
+This will:
+- Publish all packages that have new versions
+- Create Git tags for the new versions
+- Push the tags to the remote repository
+
+### 5. Common Workflow
+
+1. Make your changes
+2. Create a changeset: `pnpm changeset`
+3. Commit your changes and the changeset
+4. When ready to release:
+   - Apply changesets: `pnpm changeset version`
+   - Publish packages: `pnpm changeset publish`
+
 ## Adding a New Package
 
 1. Create a new directory in the `packages` folder
