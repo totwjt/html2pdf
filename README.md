@@ -1,47 +1,40 @@
-# 🚀 Monorepo Starter
+🎯 MVP-1 实现 HTML 模板浏览 + 动态参数替换（初步支持 Ctrl + P 导出 PDF）
 
-<div align="center">
-  <img src="https://img.shields.io/badge/Developed%20with-Cursor-2ea44f?style=for-the-badge&logo=cursor&logoColor=white" alt="Developed with Cursor" />
-</div>
+构建一个用于HTML 模板渲染 + 动态参数预览 + 手动导出 PDF 的 Web 页面，实现 UI 和导出的 PDF 完全一致。作为后续模板编辑/API 导出的基础。
 
-> A modern monorepo starter template built with pnpm workspaces, TypeScript, and Vue 3.
+⸻
 
-## Documentation
+🔧 核心功能模块
 
-- [Getting Started](./docs/getting-started.md)
-- [Project Structure](./docs/project-structure.md)
-- [Development Guide](./docs/DEVELOPMENT.md)
-- [Contributing Guide](./docs/CONTRIBUTING.md)
-- [中文文档](./docs/zh/README.md)
+✅ 1. 模板预览
+	•	支持多套模板（如处方笺、简历模板、合同模板）
+	•	模板样式、结构与预览效果一致
+	•	模板可以使用变量（如 {{name}}、{{age}}）
 
-## Features
+✅ 2. 参数填充
+	•	支持动态渲染参数表单（如 name、性别、是否显示标题）
+	•	支持类型（string、number、boolean、enum、date 等）
+	•	实时绑定到模板中
+	•	支持参数初始值、校验等能力（可选）
 
-- 🚀 Modern monorepo setup with pnpm workspaces
-- 📦 Multiple packages with shared configurations
-- 🛠️ TypeScript support
-- ⚡ Vue 3 integration
-- 📝 Documentation in both English and Chinese
+✅ 3. 打印/导出为 PDF
+	•	用户手动使用 Ctrl+P 或点击按钮调用 window.print()
+	•	页面预览区域保持与导出 PDF 一致（排版、样式）
+	•	非打印内容（表单、操作按钮等）不应出现在 PDF 中
 
-## Quick Start
+🎯 MVP-2 实现模板维护与编辑器（可视化 or 代码编辑）
 
-```bash
-# Install dependencies
-pnpm install
+📌 功能目标：
+	•	模板新增、编辑、删除（HTML 模板 + 描述 + 参数定义）
+	•	参数定义字段支持：类型（string/date/number）、默认值等
 
-# Start development server
-pnpm dev
+🎯 MVP-3 实现 API 导出（返回 PDF 下载链接）
 
-# Build all packages
-pnpm build
-```
+📌 功能目标：
+	•	提供后端接口：
+	•	输入：模板 ID + 参数
+	•	输出：生成的 PDF 文件 URL（或直接文件流下载）
+	•	支持服务端生成，无需用户手动 Ctrl + P
 
-## Packages
-
-- `@monorepo-starter/core`: Core utilities and shared logic
-- `@monorepo-starter/utils`: Common utility functions
-- `@monorepo-starter/vue`: Vue 3 components and composables
-- `@monorepo-starter/demo`: Demo application
-
-## License
-
-MIT
+渲染为 PDF
+使用 Puppeteer 启动无头 Chromium，加载 HTML 转 PDF
