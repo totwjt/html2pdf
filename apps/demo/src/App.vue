@@ -1,75 +1,102 @@
 <template>
-  <div class="app">
-    <header class="header">
-      <h1>Monorepo Starter Demo</h1>
-    </header>
-
-    <main class="main">
-      <section class="section">
-        <h2>Vue Component Demo</h2>
-        <HelloWorld />
-      </section>
-
-      <section class="section">
-        <h2>Core Package Demo</h2>
-        <div class="demo-content">
-          <p>{{ coreMessage }}</p>
-        </div>
-      </section>
-
-      <section class="section">
-        <h2>Utils Package Demo</h2>
-        <div class="demo-content">
-          <p>Utils package loaded successfully!</p>
-        </div>
-      </section>
+  <div class="container">
+    <aside class="sidebar">
+      <ParameterForm :params="params" :fields="fields" @update:params="params = $event" />
+      <button class="print-btn" @click="print">打印 PDF</button>
+    </aside>
+    <main class="preview">
+      <div class="a4-paper" id="print-area">
+        <tmp1 />
+      </div>
     </main>
   </div>
 </template>
 
 <script setup lang="ts">
-import { HelloWorld } from '@monorepo-starter/vue'
-import { HelloWorldCore } from '@monorepo-starter/core'
-import { formatDate } from '@monorepo-starter/utils'
+import { ref } from 'vue'
+import ParameterForm from './components/ParameterForm.vue'
+import { tmp1 } from '@monorepo-starter/vue'
 
-const coreMessage = HelloWorldCore()
+interface Field {
+  key: string
+  label: string
+  type: 'string' | 'number' | 'boolean' | 'enum'
+  options?: string[]
+}
 
-// Log core package demo
-console.log('Core package demo:', coreMessage)
+const template = `<div>
+  <h2 v-if="showTitle">欢迎您，{{name}}</h2>
+  <p>性别：{{gender}}</p>
+  <p>年龄：{{age}}</p>
+</div>`
 
-// Log utils package demo
-console.log('Utils package demo:', formatDate(new Date()))
+const fields: Field[] = [
+  { key: 'name', label: '姓名', type: 'string' },
+  { key: 'gender', label: '性别', type: 'enum', options: ['男', '女'] },
+  { key: 'age', label: '年龄', type: 'number' },
+  { key: 'showTitle', label: '显示标题', type: 'boolean' },
+]
+
+const params = ref({
+  name: '张三',
+  gender: '男',
+  age: 30,
+  showTitle: true,
+})
+
+function print() {
+  // 只打印预览区域
+  const printContents = document.getElementById('print-area')?.innerHTML
+  const originalContents = document.body.innerHTML
+  if (printContents) {
+    document.body.innerHTML = printContents
+    window.print()
+    document.body.innerHTML = originalContents
+    location.reload()
+  }
+}
 </script>
 
 <style>
-.app {
-  min-height: 100vh;
-  padding: 2rem;
+.container {
+  display: flex;
+  height: 100vh;
 }
-
-.header {
-  text-align: center;
-  margin-bottom: 2rem;
+.sidebar {
+  width: 300px;
+  padding: 24px;
+  background: #f8f9fa;
+  border-right: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
-
-.main {
-  max-width: 800px;
-  margin: 0 auto;
+.print-btn {
+  margin-top: 24px;
+  padding: 10px 0;
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
 }
-
-.section {
-  margin-bottom: 2rem;
-  padding: 1.5rem;
-  background-color: #f3f4f6;
-  border-radius: 8px;
+.preview {
+  flex: 1;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
 }
-
-.section h2 {
-  color: #3b82f6;
-  margin-bottom: 1rem;
-}
-
-.demo-content {
-  color: #6b7280;
+.a4-paper {
+  width: 148mm;
+  height: 210mm;
+  background: #fff;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  margin: 32px 0;
+  padding: 32px 24px;
+  box-sizing: border-box;
+  position: relative;
 }
 </style>

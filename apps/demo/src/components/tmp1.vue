@@ -1,0 +1,1 @@
+import { tmp1 } from '@monorepo-starter/vue'
